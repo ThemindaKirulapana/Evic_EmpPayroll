@@ -2,27 +2,28 @@ package com.dinemore.cud.controller;
 
 import com.dinemore.cud.dto.Employeedto;
 import com.dinemore.cud.dto.ResponseDTO;
-import com.dinemore.cud.entity.Employee;
-import com.dinemore.cud.service.EmployeeService;
 import com.dinemore.cud.service.impl.EmployeeServiceimpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 
 @RestController
-@RequestMapping("/api/v1/emp")
 public class EmployeeController {
 
+    @RequestMapping("/api/v1/emp")
+    public String show(){
+        return "redirect:Employee";
+    }
     @Autowired
     private  EmployeeServiceimpl employeeService1;
 
-    @PostMapping("/save")
-    public ResponseDTO saveEmp(@RequestBody Employeedto employeedto){
+    @PostMapping(value="/save")
+    public String saveEmp(@ModelAttribute("Employee") Employeedto employeedto){
 
-        return employeeService1.saveEmployee(employeedto);
+         employeeService1.saveEmployee(employeedto);
+         return "redirect:Employee";
     }
 
     @GetMapping("/get")
