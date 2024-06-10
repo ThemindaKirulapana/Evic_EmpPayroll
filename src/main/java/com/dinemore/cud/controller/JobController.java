@@ -37,4 +37,9 @@ public class JobController {
         return jobServiceimpl112.getJobByname(String.valueOf(name));
     }
 
+    @DeleteMapping("/delete/{id}")
+    public ResponseDTO deletejobbyID(@PathVariable String id){
+        return jobServiceimpl112.deletejob(id);
+    }
+
 }

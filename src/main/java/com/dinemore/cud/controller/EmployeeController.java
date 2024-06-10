@@ -10,20 +10,23 @@ import java.util.List;
 
 
 @RestController
+@RequestMapping("/api/v1/emp")
 public class EmployeeController {
 
-    @RequestMapping("/api/v1/emp")
+
     public String show(){
         return "redirect:Employee";
     }
     @Autowired
     private  EmployeeServiceimpl employeeService1;
 
-    @PostMapping(value="/save")
-    public String saveEmp(@ModelAttribute("Employee") Employeedto employeedto){
+      //@PostMapping(value="/save")
+     @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public ResponseDTO save (@ModelAttribute("Employee") Employeedto employeedto){
 
-         employeeService1.saveEmployee(employeedto);
-         return "redirect:Employee";
+
+           return employeeService1.saveEmployee(employeedto);
+         //return "redirect:Employee";
     }
 
     @GetMapping("/get")

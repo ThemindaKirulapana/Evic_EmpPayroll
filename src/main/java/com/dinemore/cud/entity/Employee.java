@@ -19,6 +19,7 @@ public class Employee {
     private String name;
     @Column(name = "Contact_Number")
     private Long contact_Number;
+
     @Column(name = "Username")
     private String Username;
     @Column(name = "Password")

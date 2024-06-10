@@ -60,4 +60,14 @@ public class JobServiceimpl implements JobService {
      responseDTO.setStatus(String.valueOf(HttpStatus.OK));
      return responseDTO;
     }
+
+    @Override
+    public ResponseDTO deletejob(String id) {
+
+        ResponseDTO responseDTOP=new ResponseDTO();
+        jobRepository22.deleteById(id);
+        responseDTOP.setMessage("ok");
+        responseDTOP.setStatus(String.valueOf(HttpStatus.OK));
+        return responseDTOP;
+    }
 }

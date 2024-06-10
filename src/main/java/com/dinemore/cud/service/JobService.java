@@ -14,4 +14,6 @@ public interface JobService {
     public List<Jobdto> gettAllJob();
 
     public ResponseDTO getJobByname(String name);
+
+    public ResponseDTO deletejob(String id);
 }
