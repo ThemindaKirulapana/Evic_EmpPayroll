@@ -3,7 +3,7 @@ server:
 spring:
   datasource:
     username: root
-    url: jdbc:mysql://localhost:3306/dinermore
+    url: jdbc:mysql://localhost:3306/evic
     password: Renuka*123
   jpa:
     properties:

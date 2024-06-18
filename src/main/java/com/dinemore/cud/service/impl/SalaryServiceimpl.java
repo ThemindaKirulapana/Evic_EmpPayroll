@@ -24,14 +24,19 @@ public class SalaryServiceimpl implements SalaryService {
         ResponseDTO responseDTO=new ResponseDTO();
         try {
             Salary sal=new Salary();
-            sal.setSalId(salarydto1.getSalId());
+            String salId = salarydto1.getSalId();
+            if (salId == null || salId.trim().isEmpty()) {
+                throw new RuntimeException("Salary ID cannot be null or empty");
+            }
+            String salIdTrimmed = salarydto1.getSalId().trim(); // Trim any leading/trailing spaces
+            sal.setSalId(salIdTrimmed);
+            // sal.setSalId(salarydto1.getSalId());
 
-//            Job job =jobRepository.findJobByname(salarydto1.getJob_name());
-//
-//            if(job==null){
-//                throw new RuntimeException("Job with id"+salarydto1.getJob_name()+"Not Found");
-//            }
-
+            Job job =jobRepository.findJobByname(salarydto1.getJob_name());
+            sal.setJob(job);
+            if(job==null){
+                throw new RuntimeException("Job with id"+salarydto1.getJob_name()+"Not Found");
+            }
             sal.setIncrement(salarydto1.getIncrement());
             sal.setAmount(salarydto1.getAmount());
             salaryRepository2.save(sal);
@@ -41,6 +46,7 @@ public class SalaryServiceimpl implements SalaryService {
 
         }catch (Exception ex){
             log.error("Internal Server error",ex);
+            responseDTO.setMessage("Error: " + ex.getMessage());
             responseDTO.setStatus(String.valueOf(HttpStatus.BAD_REQUEST));
 
             return responseDTO;

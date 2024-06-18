@@ -17,8 +17,8 @@ public class Salary {
     @Column(name = "Salary_ID")
     private String SalId;
 
-    @OneToOne
-    @JoinColumn(name = "job_name")
+    @OneToMany
+    @JoinColumn(name = "job_id")
     private Job job;
 
     @Column(name = "Amount")

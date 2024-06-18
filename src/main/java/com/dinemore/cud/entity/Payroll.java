@@ -18,19 +18,19 @@ public class Payroll {
     @Column(name ="PayRoll_ID")
     private String PayrollId;
 
-    @OneToOne
+    @OneToMany
     @JoinColumn(name ="Emp_id")
     private Employee employee;
 
-    @OneToOne
+    @OneToMany
     @JoinColumn(name="job_id")
     private Job job;
 
-    @OneToOne
+    @OneToMany
     @JoinColumn(name="SalId")
     private Salary  salary;
 
-    @OneToOne
+    @OneToMany
     @JoinColumn(name="LeaveID")
     private Leave leave;
 
