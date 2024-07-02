@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Jobdto {
 
-    private String job_id;
+
     private String name;
     private String department;
     private float salary_range;

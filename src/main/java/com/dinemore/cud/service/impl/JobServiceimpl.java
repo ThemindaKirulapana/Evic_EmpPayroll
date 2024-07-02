@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 
 @Service
@@ -23,9 +24,10 @@ public class JobServiceimpl implements JobService {
     private JobRepository jobRepository22;
     @Override
     public Job savejob(Jobdto jobdto) {
-
+        UUID uuid=UUID.randomUUID();
+        long jobid=uuid.getLeastSignificantBits();
         Job job11=new Job();
-        job11.setId(jobdto.getJob_id());
+
         job11.setName(jobdto.getName());
         job11.setDepartment(jobdto.getDepartment());
         job11.setSalary_range(jobdto.getSalary_range());
@@ -41,7 +43,7 @@ public class JobServiceimpl implements JobService {
         Alljobs.stream().forEach((data->{
 
             Jobdto jobdto1=new Jobdto();
-            jobdto1.setJob_id(data.getId());
+
             jobdto1.setName(data.getName());
             jobdto1.setDepartment(data.getDepartment());
             jobdto1.setSalary_range(data.getSalary_range());

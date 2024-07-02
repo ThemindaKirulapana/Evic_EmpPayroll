@@ -22,7 +22,7 @@ public class EmployeeController {
 
       //@PostMapping(value="/save")
      @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public ResponseDTO save (@ModelAttribute("Employee") Employeedto employeedto){
+    public ResponseDTO save (@RequestBody Employeedto employeedto){
 
 
            return employeeService1.saveEmployee(employeedto);
