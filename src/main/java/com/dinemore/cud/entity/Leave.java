@@ -19,7 +19,7 @@ public class Leave {
     @Column(name ="Leave_Roll_ID")
     private  String LeaveID;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name ="Emp_id")
     private Employee employee;
 
